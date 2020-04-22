@@ -1,0 +1,63 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <span id="chat-history">
+
+
+
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s8">
+            <input id="chat" type="text" class="validate">
+            <label for="chat">Text</label>
+        </div>
+        <div class="col s4">
+            <button class="waves-effect waves-light btn">send</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        var connection;
+        $(document).ready(function () {
+            connection = new WebSocket('wss://localhost:9222');
+            // When the connection is open, send some data to the server
+            connection.onopen = function () {
+            };
+
+            // Log errors
+            connection.onerror = function (error) {
+                console.log('WebSocket Error ' + error);
+            };
+
+            // Log messages from the server
+            connection.onmessage = function (e) {
+                console.log('Server: ' + e.data);
+            };
+        })
+
+        $()
+    </script>
+
+</body>
+
+</html>
