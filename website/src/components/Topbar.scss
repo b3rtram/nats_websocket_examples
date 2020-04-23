@@ -1,0 +1,71 @@
+@import "../variables";
+
+.topbar {
+    max-height: 56px;
+    display: flex;
+    align-items: center;
+    background-color: $topbar-background;
+    color: $topbar-text;
+    padding: 5px 10px;
+    z-index: 10;
+    transition: all 0.5s ease-out;
+  
+    .sidenav-trigger {
+      color: $topbar-text;
+      margin-right: 15px;
+    }
+  
+    .logo {
+      height: 30px;
+      margin-right: 10px;
+    }
+  
+    .story-title {
+      margin: 0 15px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+  
+      @media (max-width: 600px) {
+        margin: 0 15px 0 5px;
+      }
+    }
+  
+    .logo-text {
+      background-color: $topbar-background;
+      color: $topbar-text;
+      font-family: "Lora", serif;
+      font-size: 25px;
+  
+      @media (max-width: 992px) {
+        margin: 0;
+      }
+    }
+  
+    .middle {
+      flex-grow: 1;
+    }
+  
+    .btn-icon {
+      width: 35px;
+      border-radius: 100px;
+      text-align: center;
+      padding: 0;
+      display: inline-block;
+      color: $topbar-text;
+  
+      i {
+        display: contents;
+        margin: 0;
+        font-size: 23px;
+      }
+    }
+  
+    .buttons {
+      .btn {
+        margin-left: 10px;
+        color: $topbar-text;
+      }
+    }
+  }
+  

@@ -1,0 +1,22 @@
+// Main variables
+@import "./node_modules/materialize-css/sass/components/color-variables";
+
+// Colors
+$background: #eee;
+$primary: color("blue", "base");
+$secondary: color("light-blue", "base");
+$topbar-text: #fff;
+$topbar-background: #000;
+$text: #555;
+$text-decent: rgba($text, 0.5);
+$text-muted: rgba($text, 0.5);
+$text-accent: #00D5FF;
+$orange: #FA9206;
+$green: #00C54F;
+$blue: #0097FD;
+$yellow: #F2FA06;
+$purple: #8706FA;
+
+// Fonts
+$font-accent: "Lora", serif;
+$font-story: "Lora", serif;

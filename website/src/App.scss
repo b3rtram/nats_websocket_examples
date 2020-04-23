@@ -1,0 +1,140 @@
+@import "variables";
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: $text;
+  background: $background;
+}
+
+* {
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-story;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+
+    .logo {
+      height: 35px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      color: #000;
+      font-family: $font-accent;
+      font-size: 28px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    .btn {
+      margin: 10px 20px;
+    }
+  }
+}
+
+.buttons {
+  .logged-in-only {
+    display: none;
+  }
+  .logged-out-only {
+    display: inline-block;
+  }
+}
+
+.logged-in {
+  .buttons {
+    .logged-in-only {
+      display: inline-block;
+    }
+    .logged-out-only {
+      display: none;
+    }
+  }
+}
+
+.modal {
+  border-radius: 10px;
+
+  .modal-content {
+    h4 {
+      font-size: 25px;
+    }
+
+    form {
+      margin-top: 40px;
+    }
+
+    .collapsible {
+      margin: 20px 0 0 0;
+    }
+  }
+  .modal-footer {
+    padding: 6px 14px;
+    height: 62px;
+  }
+
+  &.login {
+    .login-buttons {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .btn {
+        &.facebook {
+          background-color: #385898;
+        }
+      }
+    }
+  }
+}
+
+.preloader-full {
+  position: absolute;
+  top: 0px;
+  width: 0px;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
