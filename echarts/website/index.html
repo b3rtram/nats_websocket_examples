@@ -12,40 +12,70 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <script src="echarts.min.js"></script>
+    <script src="nats.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+
+
     <div id="main" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
-        // based on prepared DOM, initialize echarts instance
+
         var myChart = echarts.init(document.getElementById('main'));
 
         // specify chart configuration item and data
-        var option = {
-            title: {
-                text: 'ECharts entry example'
-            },
-            tooltip: {},
-            legend: {
-                data:['Sales']
-            },
+        option = {
             xAxis: {
-                data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+                type: 'category',
+                data: []
             },
-            yAxis: {},
+            yAxis: {
+                type: 'value'
+            },
             series: [{
-                name: 'Sales',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
+                data: [],
+                type: 'line'
             }]
         };
 
+
         // use configuration item and data specified to show chart
         myChart.setOption(option);
+
+
+        const init = async function () {
+            // if the connection doesn't resolve, an exception is thrown
+            // a real app would allow configuring the URL
+            const conn = await nats.connect({ url: 'wss://localhost:9222', payload: nats.Payload.JSON })// handle errors sent by the gnatsd - permissions errors, etc.
+            conn.addEventListener('error', (ex) => {
+                console.log(ex)
+            })
+
+            // handle connection to the server is closed - should disable the ui
+            conn.addEventListener('close', () => {
+                console.log("close")
+            })
+
+            conn.subscribe("measureValues", (_, msg) => {
+                option.xAxis.data.push(msg.data.time);
+                option.series[0].data.push(msg.data.value);
+
+                let len = option.xAxis.data.length;
+
+                if(len > 20) {
+                    option.xAxis.data = option.xAxis.data.slice(1, option.xAxis.data.length)
+                    option.series[0].data = option.series[0].data.slice(1, option.series[0].data.length)
+                }
+                myChart.setOption(option);
+            })
+        }
+
+        init();
+        // based on prepared DOM, initialize echarts instance
+
     </script>
 </body>
 
