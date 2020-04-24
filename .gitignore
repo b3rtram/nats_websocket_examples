@@ -2,3 +2,4 @@ localhost*
 nats-server
 nats.config
 **/node_modules
+proconnectValues.csv

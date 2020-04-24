@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+
+    <title>eCharts</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <script src="echarts.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // specify chart configuration item and data
+        var option = {
+            title: {
+                text: 'ECharts entry example'
+            },
+            tooltip: {},
+            legend: {
+                data:['Sales']
+            },
+            xAxis: {
+                data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'Sales',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // use configuration item and data specified to show chart
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
