@@ -17,7 +17,7 @@ class ChatHistory extends Component {
 
         let conn = await NatsConnection.connect({ url: 'wss://localhost:9222', payload: Payload.JSON })
 
-        conn.subscribe('newMessages', (err, msg) => {
+        conn.subscribe('newMessage', (err, msg) => {
             console.log(msg.data);
             this.setState({messages: [...this.state.messages, msg.data]})
         });
@@ -25,7 +25,7 @@ class ChatHistory extends Component {
 
     render() {
         return (
-            <div>
+            <div className="chathistory">
                     {
                         this.state.messages &&
                         this.state.messages.map((msg,i) => 
