@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { NatsConnection, Payload } from 'nats.ws'
+import './Chat.scss'
 
 class Chat extends Component {
 
@@ -22,17 +23,14 @@ class Chat extends Component {
     }
 
     sendMessage(event) {
-
         this.state.natsConn.publish('newMessage', { text: event.value })
-
-
     }
 
     render() {
         return (
             <div className="chat">
-                <input placeholder="Placeholder" id="first_name" type="text" />
-                <label for="first_name">First Name</label>
+                <textarea placeholder="" id="first_name" type="text" className="chatInput"/>
+                <button className="send">send</button>
             </div>
         )
     }
