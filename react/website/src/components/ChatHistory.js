@@ -17,7 +17,7 @@ class ChatHistory extends Component {
 
         let conn = await NatsConnection.connect({ url: 'wss://localhost:9222', payload: Payload.JSON })
 
-        conn.subscribe('newMessage', (err, msg) => {
+        conn.subscribe('chat.OSCON2019.posts.*', (err, msg) => {
             console.log(msg.data);
             this.setState({messages: [...this.state.messages, msg.data]})
         });

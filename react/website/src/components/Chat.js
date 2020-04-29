@@ -23,14 +23,14 @@ class Chat extends Component {
     }
 
     sendMessage(event) {
-        this.state.natsConn.publish('newMessage', { text: event.value })
+        this.state.natsConn.publish('chat.OSCON2019.posts.*', { text: event.value })
     }
 
     render() {
         return (
             <div className="chat">
-                <textarea placeholder="" id="first_name" type="text" className="chatInput"/>
-                <button className="send">send</button>
+                <textarea placeholder="" id="first_name" type="text" className="chatInput" />
+                <button className="send" >send</button>
             </div>
         )
     }

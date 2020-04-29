@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import { NatsConnection, Payload } from 'nats.ws'
+import { NatsConnection, Payload } from 'nats.ws';
+import './Sidebar.scss';
 
 class Sidebar extends Component {
 
@@ -10,8 +11,9 @@ class Sidebar extends Component {
         this.state = {
             messages: [],
             natsConn: {}
-        }
+        };
 
+        this.changeChannel = this.changeChannel.bind(this);
     }
 
     async componentDidMount() {
@@ -20,10 +22,24 @@ class Sidebar extends Component {
         this.setState({ natsConn: conn })
     }
 
+    changeChannel(channel) {
+        console.log(channel);
+    }
+
+    addChannel() {
+        console.log("add Channel");
+    }
+
     render() {
         return (
-            <div className="sidebar">
-                SideBar
+            <div className="sidebarinternal">
+                Channels
+                <hr/>
+
+                <ul>
+                    <li><a href="#" onClick={() => this.changeChannel("common")}>common</a></li>
+                    <li><a href="#" onClick={this.addChannel}>+</a></li>
+                </ul>
             </div>
         )
     }
