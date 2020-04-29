@@ -12,7 +12,6 @@ function App() {
       <div className="topbar">
         <Topbar />
       </div>
-
       <div className="main">
         <div className="sidebar">
           <Sidebar />
