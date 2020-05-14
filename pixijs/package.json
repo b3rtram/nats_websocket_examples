@@ -1,17 +1,24 @@
 {
-  "name": "pixijs",
+  "name": "rpg",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camen6ert/rpg.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camen6ert/rpg/issues"
+  },
+  "homepage": "https://github.com/camen6ert/rpg#readme",
   "dependencies": {
-    "nats": "^1.4.8",
+    "nats": "^1.4.9",
     "nats.ws": "^1.0.0-17",
-    "uuid": "^7.0.3"
+    "uuid": "^8.0.0"
   }
 }
